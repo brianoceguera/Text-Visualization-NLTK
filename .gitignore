@@ -1,0 +1,5 @@
+# Exclude files from uploads dir
+uploads/*
+
+# exception to the rule
+!uploads/README.md 

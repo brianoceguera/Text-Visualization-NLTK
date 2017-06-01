@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head></head>
+<body>
+<h1>This is my header!</h1>
+<form action="upload.php" method="POST" enctype="multipart/form-data">
+    <!--Limit upload to 8mbytes -->
+    <input type="hidden" name="MAX_FILE_SIZE" value="8000000"/>
+    <input type="file" name="userfile"/>
+    <input type="submit" value="Upload"/>
+</form> 
+</body>
+</html>
