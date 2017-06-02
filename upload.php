@@ -8,19 +8,24 @@ ini_set('display_errors', 1);
 /*Uncommet to see who owns the apache process*/
 //echo exec('whoami');
 
+/*Specify relative upload dir and filename extension*/
 $uploaddir = 'uploads/';
-$uploadfile = $uploaddir . basename($_FILES["userfile"]["name"]);
+$extension = '.txt';
+
+/**Do not accept user's filename, rename the file with a safe, unique name
+   The second parameter specifies the filename prefix
+*/
+$tempfilepath = tempnam($uploaddir, 'usr-');
+unlink($tempfilepath);
+
+/*Ready the path to save the file*/
+$pathtofile = $tempfilepath . $extension;
 $uploadstatus = 0;
-$fileType = pathinfo($uploadfile,PATHINFO_EXTENSION);
+$fileType = pathinfo($_FILES['userfile']['name'],PATHINFO_EXTENSION);
 
 /*Check if user uploaded anything*/
 if ($_FILES['userfile']['size'] == 0) {
     echo "You must upload a file! ";
-}
-
-/*Check if file already exists. Should the program reupload?*/
-else if (file_exists($uploadfile)) {
-    echo "Sorry, file already exists. ";
 }
 
 /*Allow only .txt formats*/
@@ -43,10 +48,19 @@ if ($uploadstatus == 0) {
 
 /*Attempt file upload*/
 } else {
-    if (move_uploaded_file($_FILES["userfile"]["tmp_name"], $uploadfile)) {
-        echo "The file ". basename( $_FILES["userfile"]["name"]). " has been uploaded.";
+    if (move_uploaded_file($_FILES['userfile']['tmp_name'], $pathtofile)) {
+        echo 'The file was uploaded as ' . $pathtofile . '<br/>';
+
+	/*File uploaded, now run nltk script*/
+	$command = escapeshellcmd('./python-test.py ' . $pathtofile);
+	$result = shell_exec($command);
+	echo $result . '<br/>';
+	//var_dump($result);
+        
+	/*Want to return nltk results as a JSON format to javscript*/
+
     } else {
-        echo "Sorry, there was an error uploading your file.";
+        echo 'Sorry, there was an error uploading your file.';
     }
 }
 ?>
