@@ -49,7 +49,6 @@ print("Most common N samples:")
 print(fdist.most_common(num_samples))
 
 #print word count
-print("\n")
 print("Word count:")
 print(len(tokens))
 

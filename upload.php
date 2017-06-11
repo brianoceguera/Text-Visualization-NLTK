@@ -51,7 +51,7 @@ if ($uploadstatus == 0) {
         echo 'The file was uploaded as ' . $pathtofile . '<br/>';
 
 	/*File uploaded, now run nltk script*/
-	$command = escapeshellcmd('./python-test.py ' . $pathtofile);
+	$command = escapeshellcmd('./python-parser.py ' . $pathtofile);
 	$result = shell_exec($command);
         echo $result . '<br/>';
 	//var_dump($result);
