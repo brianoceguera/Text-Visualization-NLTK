@@ -1,6 +1,8 @@
 #!/usr/bin/python3
 
+import json
 from sys import argv
+from collections import OrderedDict
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize, sent_tokenize
 from nltk.probability import FreqDist
@@ -33,23 +35,17 @@ def tokenize_txt(text):
 rawtxt = read_file(filename_str)
 tokens = tokenize_txt(rawtxt)
 
-#print tokens
+#Uncomment to see all tokens
 #print(tokens)
 
-#print frequency distribution of words
+#frequency distribution of words
 fdist = FreqDist(tokens)
+most_common = fdist.most_common(num_samples)
 
-#most used word
-print("Most used word:")
-print(fdist.max())
+#num of all tokens
+token_count = ["tokens_count",len(tokens)]
+most_common.append(token_count)
 
-#print samples
-print("\n")
-print("Most common N samples:")
-print(fdist.most_common(num_samples))
-
-#print word count
-print("Word count:")
-print(len(tokens))
-
-# output data to json format, (maybe csv?) for d3 to read
+# output data to json format
+json_string = json.dumps(OrderedDict(most_common))
+print(json_string)

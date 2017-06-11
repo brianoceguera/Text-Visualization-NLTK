@@ -48,16 +48,14 @@ if ($uploadstatus == 0) {
 /*Attempt file upload*/
 } else {
     if (move_uploaded_file($_FILES['userfile']['tmp_name'], $pathtofile)) {
-        echo 'The file was uploaded as ' . $pathtofile . '<br/>';
+        //echo 'The file was uploaded as ' . $pathtofile . '<br/>';
 
 	/*File uploaded, now run nltk script*/
-	$command = escapeshellcmd('./python-parser.py ' . $pathtofile);
+	$command = escapeshellcmd('./nltk-parser.py ' . $pathtofile);
 	$result = shell_exec($command);
         echo $result . '<br/>';
-	//var_dump($result);
-        
-	/*Want to return nltk results as a JSON format to javscript*/
 
+        //var_dump($result);
     } else {
         echo 'Sorry, there was an error uploading your file.';
     }
