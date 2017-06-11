@@ -2,9 +2,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<title>Textbook Visualization</title>
 </head>
 <body>
-<h1>This is my header!</h1>
+<h1>Please upload a textbook.</h1>
+<h2>Textbook must be a ".txt" file with UTF-8 encoding.</h2>
+<h3>Files larger than 8 MB are ignored.</h3>
 <form action="upload.php" method="POST" enctype="multipart/form-data">
     <!--Limit upload to 8mbytes -->
     <input type="hidden" name="MAX_FILE_SIZE" value="8000000"/>
