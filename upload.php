@@ -1,6 +1,5 @@
 <?php
 ini_set('display_errors', 1);
-
 /**References: W3Schools: https://www.w3schools.com/php/php_file_upload.asp
                PHP Manual: http://php.net/manual/en/features.file-upload.post-method.php
 */
@@ -15,7 +14,7 @@ $extension = '.txt';
 /**Do not accept user's filename, rename the file with a safe, unique name
    The second parameter specifies the filename prefix
 */
-$tempfilepath = tempnam($uploaddir, 'usr-');
+$tempfilepath = tempnam($uploaddir, 'txt-');
 unlink($tempfilepath);
 
 /*Ready the path to save the file*/
@@ -54,7 +53,7 @@ if ($uploadstatus == 0) {
 	/*File uploaded, now run nltk script*/
 	$command = escapeshellcmd('./python-test.py ' . $pathtofile);
 	$result = shell_exec($command);
-	echo $result . '<br/>';
+        echo $result . '<br/>';
 	//var_dump($result);
         
 	/*Want to return nltk results as a JSON format to javscript*/
