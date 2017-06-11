@@ -53,7 +53,7 @@ if ($uploadstatus == 0) {
 	/*File uploaded, now run nltk script*/
 	$command = escapeshellcmd('./nltk-parser.py ' . $pathtofile);
 	$result = shell_exec($command);
-        echo $result . '<br/>';
+        echo $result;
 
         //var_dump($result);
     } else {
