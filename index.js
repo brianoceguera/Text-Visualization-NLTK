@@ -1,17 +1,16 @@
 //References:
 //https://developer.mozilla.org/en-US/docs/Web/API/FormData/Using_FormData_Objects
 //http://sahandsaba.com/visualizing-philosophers-and-scientists-by-the-words-they-used-with-d3js-and-python.html
+//https://stackoverflow.com/questions/11142884/fast-way-to-get-the-min-max-values-among-properties-of-object
 
 
 var form = document.forms.namedItem("fileupload");
 
-//Function to compute sum accross an object's values
-//Used to calculate the mean frequency of words
-function sum( obj ) {
-  return Object.keys( obj )
-               .reduce( function( sum, key ){
-                 return sum + parseFloat( obj[key] );
-               }, 0 );
+//Function to compute max value across an object's values
+//Used to normalize text size of all words
+function find_max(obj) {
+  var arr = Object.keys( obj ).map(function ( key ) { return obj[key]; });
+  return Math.max.apply( null, arr );
 }
 
 //Event listener for when form is submitted by user
@@ -42,7 +41,7 @@ form.addEventListener('submit', function(ev) {
         return false;
       }
 
-      drawWordCloud(1, json);
+      drawWordCloud(150, json);
       formresult.innerHTML = "Ta-da~!";
     }
  
@@ -56,10 +55,9 @@ form.addEventListener('submit', function(ev) {
 }, false);
 
 
-function drawWordCloud(rescale = 2, json_words)
+function drawWordCloud(rescale = 30, json_words)
 {   //console.log("Starting to draw...  " + json_words);
-    height = width = 30 * sum(json_words) / Object.keys(json_words).length;
-    //console.log(height + "  " + width);
+    height = width = 700;
     fontFamily = "Open Sans";
     var fill = d3.scale.category20();
     d3.layout.cloud().size([width, height])
@@ -67,7 +65,7 @@ function drawWordCloud(rescale = 2, json_words)
         { 
             return {
                 text: d,
-                size: 1 + json_words[d] * rescale
+                size: ( json_words[d] / find_max(json_words) ) * rescale
             };
         }))
         .padding(1)
@@ -87,7 +85,7 @@ function drawWordCloud(rescale = 2, json_words)
         .start();
 
     function draw(words)
-    {   console.log("Entered Draw function");
+    {   //console.log("Entered Draw function");
         d3.select("#word-cloud").append("svg")
             .attr("width", width)
             .attr("height", height)
