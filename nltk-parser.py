@@ -12,7 +12,7 @@ filename_str = argv[1]
 
 stop_words = stopwords.words('english')
 boring_words = ["said", "would", "one", "could", "like", "went", "got"]
-num_samples = 20
+num_samples = 100
 
 #Load file for reading. Equivalent to a try-finally block
 #Input: file | Output: string
@@ -44,7 +44,7 @@ most_common = fdist.most_common(num_samples)
 
 #num of all tokens
 token_count = ["tokens_count",len(tokens)]
-most_common.append(token_count)
+#most_common.append(token_count)
 
 # output data to json format
 json_string = json.dumps(OrderedDict(most_common))
