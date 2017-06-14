@@ -1,6 +1,5 @@
 // Word cloud layout by Jason Davies, http://www.jasondavies.com/word-cloud/
 // Algorithm due to Jonathan Feinberg, http://static.mrfeinberg.com/bv_ch03.pdf
-// Copies a variable number of methods from source to target.
 
 (function(exports) {
     function cloud() {

@@ -7,7 +7,7 @@ from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize, sent_tokenize
 from nltk.probability import FreqDist
 
-#Store the filename provided by the php script
+#Store the filename provided by command line argument
 filename_str = argv[1]
 
 stop_words = stopwords.words('english')
@@ -35,7 +35,7 @@ def tokenize_txt(text):
 rawtxt = read_file(filename_str)
 tokens = tokenize_txt(rawtxt)
 
-#Uncomment to see all tokens
+#Uncomment to see all tokens (very large for a textbook)
 #print(tokens)
 
 #frequency distribution of words
