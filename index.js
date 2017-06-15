@@ -4,6 +4,7 @@
 //https://stackoverflow.com/questions/11142884/fast-way-to-get-the-min-max-values-among-properties-of-object
 
 var form = document.forms.namedItem("fileupload");
+var fileinput = document.getElementById("fin");
 
 //Function to compute max value across an object's values
 //Used to normalize text size of all words
@@ -12,10 +13,14 @@ function find_max(obj) {
   return Math.max.apply(null, arr);
 }
 
+fileinput.addEventListener('change', function() {
+  document.getElementById("fname").innerHTML = fileinput.files[0].name;
+}, false);
+
 //Event listener for when form is submitted by user
 form.addEventListener('submit', function(ev) {
 
-  var formresult = document.querySelector("div"),
+  var formresult = document.getElementById("fresult"),
       data = new FormData(form);
   formresult.innerHTML = "Processing file. Please wait...";
   
@@ -38,6 +43,7 @@ form.addEventListener('submit', function(ev) {
         //console.log("Parser worked!");
       } catch (e) {
         //console.log("Uh-oh");
+        formresult.innerHTML = result;
         return false;
       }
 

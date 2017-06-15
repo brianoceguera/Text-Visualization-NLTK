@@ -7,16 +7,22 @@
   </head>
 
   <body>
-    <h2>Please upload a textbook.</h2>
-    <h3>Textbook must be a ".txt" file with UTF-8 encoding. Project Gutenburg is a great place to start.</h3>
-    <h4>Files larger than 8 MB are ignored.</h4>
+    <div class="nav">
+      <h3 class="nav-title"><a href="index.html">Textbook Visualization: Fun With D3 and NLTK</a></h3>
+    </div>
+
+    <h4>Please upload a textbook.</h4>
+    <p>Textbook must be a ".txt" file with UTF-8 encoding. Project Gutenberg is a great place to start.</p>
+    <p>Files larger than 8 MB are ignored.</p>
     <form method="POST" name="fileupload" enctype="multipart/form-data">
       <!--Limit upload to 8mbytes -->
       <input type="hidden" name="MAX_FILE_SIZE" value="8000000"/>
-      <input class="fin" type="file" name="userfile"/>
+      <input id="fin" type="file" name="userfile"/>
+      <label for="fin" class="custom-fin">Browse...</label>
       <input class="submit" type="submit" value="Upload"/>
+      <span id="fname"></span> 
     </form>
-    <div></div>
+    <div id="fresult"></div>
     <div id="word-cloud"></div>
 
     <script type="text/javascript" src="d3/d3.min.js"></script>
