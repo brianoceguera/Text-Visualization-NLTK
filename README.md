@@ -32,11 +32,11 @@ This application was made as a final project for a computing course. The followi
 * While C++ is not garbage collected, the languages (Javascript, Python, PHP) used in this application all implement some form of garbarge collection.
 * Whereas C++ is an imperative language, Python is a declarative language. Python code tends to be more human readable, since lower-level details of code execution are not emphasized. For example, iterators and counter variables do not appear in a Python `for` loop.
 * In C++, variables have an explicit type. For example, an integer variable can only integers. However in Javascript, PHP, and Python, variables are containers that can change type as new objects are assigned to them.
-  * In PHP, varibles are prefixed with the dollar sign ($).
+  * In PHP, variables are prefixed with the dollar sign (`$`).
   * In Javascript, variables are prefixed with the keyword `var`
   * In Python, variables are not prefixed with anything. One only needs to provide the variable name.
 * C++ allows the use of pointers, raw or otherwise. Javascript, PHP, Python do not support pointer usage.
-* Python does not use semicolons (;) or curly braces ({ }) to indicate the end of a line/block of execution. Instead, the syntax relies heavily on indentation.
+* Python does not use semicolons (`;`) or curly braces (`{ }`) to indicate the end of a line/block of execution. Instead, the syntax relies heavily on indentation.
 * These languages are high level languages, unlike C++.
     
 
