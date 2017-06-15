@@ -20,7 +20,7 @@ The order of execution is:
 2. Make sure the apache process can run the python script. ```chmod +x python-script.py```
 3. Don't have access to a server? You can still run the python code without server access. All you need to do is specify the path to the text file in the call to the script. The script will return the 100 most frequently used words in the text, along with their counts. You can then visualize this information with a Python library like matplotlib.
 
-### Future Directions
+## Future Directions
 * Allow uploading multiple files.
 * Make the word cloud more mobile friendly.
 * Use machine learning (maybe scikit-learn in Python) to try and predict the genre or theme of a text.
