@@ -15,6 +15,14 @@ The order of execution is:
 6. D3 is called to visualize the information
 7. User sees a pretty picture
 
+## Installation Requirements
+* Apache
+* PHP
+* Python
+  * NLTK Python library
+    * Punkt tokenizer (nltk.tokenize.punkt)
+    * Stop words (English)
+
 ## FAQ
 1. You may need to edit the variable `upload_max_filesize` in your php.ini file to allow larger filesize uploads.
 2. Make sure the apache process can run the python script. ```chmod +x python-script.py```
